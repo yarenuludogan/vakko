@@ -1,0 +1,26 @@
+<div class="relative h-screen overflow-x-hidden">
+  <!-- Bullet Navigation -->
+  <div class="fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col space-y-2 z-10">
+    <div *ngFor="let item of media; let i = index"
+         [ngClass]="{'bg-white border-white': currentIndex === i, 'opacity-50': currentIndex !== i}"
+         class="w-2.5 h-2.5 rounded-full border-2 border-white cursor-pointer transition-colors duration-300 hover:opacity-75"
+         (click)="scrollToIndex(i)">
+    </div>
+  </div>
+  
+  <!-- Media Section -->
+  <div class="flex flex-col w-screen h-full snap-y snap-mandatory overflow-y-scroll">
+    <div *ngFor="let item of media; let i = index" class="w-screen h-screen snap-start relative">
+      <ng-container *ngIf="item.url.endsWith('.mp4'); else image">
+        <video [src]="item.url" controls class="object-cover w-full h-full"></video>
+      </ng-container>
+      <ng-template #image>
+        <img [src]="item.url" alt="Media" class="object-cover w-full h-full"/>
+      </ng-template>
+      <!-- Overlay Text -->
+      <div class="absolute inset-0 flex items-center justify-center pt-80 text-white text-lg font-bold">
+        {{ overlayTexts[i] }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+/* home.component.css */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  img {
+    object-fit: cover;
+  }
+  
+  .snap-y {
+    scroll-snap-type: y mandatory;
+  }
+  
+  .snap-start {
+    scroll-snap-align: start;
+  }
+  
+
