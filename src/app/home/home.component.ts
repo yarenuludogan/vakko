@@ -62,4 +62,12 @@ export class HomeComponent implements AfterViewInit {
     const scrollPosition = container.scrollTop;
     this.currentIndex = Math.round(scrollPosition / window.innerHeight);
   }
+
+ scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
 }

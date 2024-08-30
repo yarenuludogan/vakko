@@ -11,42 +11,42 @@
     </div>
   </div>
 
-  <!-- Dropdown Menu -->
-  <div *ngIf="dropdownOpen" class="fixed left-0 top-0 bg-white w-64 h-screen z-20 transition-transform duration-300">
-    <button class="absolute top-8 left-8 text-2xl text-gray-800 hover:text-black" (click)="closeDropdown()">X</button>
-    <ul class="p-4 mt-16">
-      <li 
-        class="relative group"
-        *ngFor="let category of categories"
-        (mouseenter)="onCategoryMouseEnter(category)"
-        
-      >
-        <a href="#" class="block font-bold font-maison text-lg text-gray-400 hover:text-black mt-4 ml-6">
-          {{ category.name }}
-        </a>
-      </li>
-      <a href="#" class="absolute bottom-8 left-4 block font-maison text-lg text-gray-500 hover:text-black mt-4 ml-6">HAKKINDA</a>
-      <a href="#" class="absolute bottom-8 left-32 block font-maison text-lg text-gray-500 hover:text-black mt-4 ml-6">TR/EN</a>
-    </ul>
-  </div>
-
-  <!-- Alt Kategoriler -->
-  <div *ngIf="dropdownOpen && hoveredCategory" class="fixed top-0 left-64 bg-white w-96 h-screen z-30">
-    <ul class="p-2 max-h-full overflow-y-auto mt-24">
-      <li 
-        *ngFor="let subCategory of hoveredCategory.subCategories" 
-        class="transition-transform transform animate-slideUp"
-      >
-        <a href="#" class="block text-black p-2">{{ subCategory }}</a>
-      </li>
-    </ul>
-    <img 
-      *ngIf="hoveredCategory.image" 
-      [src]="hoveredCategory.image" 
-      class="absolute top-0 left-full h-full w-196 object-cover animate-slideIn" 
-      alt="{{ hoveredCategory.name }} Image"
+ <!-- Dropdown Menu -->
+<div *ngIf="dropdownOpen" class="fixed left-0 top-0 bg-white w-full md:w-64 h-screen z-20 transition-transform duration-300">
+  <button class="absolute top-8 left-8 text-2xl text-gray-800 hover:text-black" (click)="closeDropdown()">X</button>
+  <ul class="p-4 mt-16">
+    <li 
+      class="relative group"
+      *ngFor="let category of categories"
+      (mouseenter)="onCategoryMouseEnter(category)"
     >
-  </div>
+      <a href="#" class="block font-bold font-maison text-lg text-gray-400 hover:text-black mt-4 ml-6">
+        {{ category.name }}
+      </a>
+    </li>
+    <a href="#" class="absolute bottom-8 left-4 block font-maison text-lg text-gray-500 hover:text-black mt-4 ml-6">HAKKINDA</a>
+    <a href="#" class="absolute bottom-8 left-32 block font-maison text-lg text-gray-500 hover:text-black mt-4 ml-6">TR/EN</a>
+  </ul>
+</div>
+
+<!-- Alt Kategoriler -->
+<div *ngIf="dropdownOpen && hoveredCategory" class="fixed top-0 left-0 md:left-64 bg-white w-full md:w-96 h-screen z-30 transition-transform duration-300">
+  <ul class="p-2 max-h-full overflow-y-auto mt-24">
+    <li 
+      *ngFor="let subCategory of hoveredCategory.subCategories" 
+      class="transition-transform transform animate-slideUp"
+    >
+      <a href="#" class="block text-black p-2">{{ subCategory }}</a>
+    </li>
+  </ul>
+  <img 
+    *ngIf="hoveredCategory.image" 
+    [src]="hoveredCategory.image" 
+    class="absolute top-0 left-0 md:left-full h-full w-full md:w-196 object-cover animate-slideIn" 
+    alt="{{ hoveredCategory.name }} Image"
+  >
+</div>
+
 
   <!-- Sağdaki İkonlar -->
   <div class="flex items-center space-x-10 mr-10">
